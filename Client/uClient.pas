@@ -39,6 +39,7 @@ type
     procedure Connect(var client: TIdTCPClient);
     procedure DisConnect(var client: TIdTCPClient);
     procedure Send(var client: TIdTCPClient);
+    procedure ParseProc(msg: AnsiString);
     { Private declarations }
   public
     { Public declarations }
@@ -78,6 +79,11 @@ begin
   end;
 end;
 
+procedure TFormClient.ParseProc(msg: AnsiString);
+begin
+  Memo1.Lines.Add('C-ParseProc: ' + msg);
+end;
+
 procedure TFormClient.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   IdTCP_Recv.Terminate; // 有使用到 thread 就要注意和處理比較多的事
@@ -87,7 +93,7 @@ procedure TFormClient.FormCreate(Sender: TObject);
 begin
   // 使用 Thread 的方式
   IdTCP_Recv := TIdTCP_Recv.Create;
-  IdTCP_Recv.Start;
+  IdTCP_Recv.MyParseProc := ParseProc;
 end;
 
 procedure TFormClient.Send(var client: TIdTCPClient);
@@ -146,7 +152,7 @@ procedure TFormClient.IdTCPClient1Connected(Sender: TObject);
 begin
   Memo1.Lines.Add(DateTimeToStr(Now));
   Memo1.Lines.Add('C-Connected');
-  tmReadLn.Enabled := True;
+  tmReadLn.Enabled := true;
 end;
 
 procedure TFormClient.IdTCPClient1Disconnected(Sender: TObject);

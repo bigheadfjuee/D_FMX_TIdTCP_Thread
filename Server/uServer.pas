@@ -44,6 +44,7 @@ type
     procedure StopServer;
     procedure SendToOneClient(str: string);
     procedure SendToAllClient(str: string);
+    procedure doParseMsg(msg: string);
 
   public
     { Public declarations }
@@ -146,23 +147,28 @@ begin
   // 直接讀一行 (自動用換行字元區隔)
   str := AContext.Connection.IOHandler.ReadLn(IndyTextEncoding_UTF8);
 
-  // Tony 用 Synchronize(阻塞) 會讓 Memo 顯示異常
+  // Synchronize(阻塞)
   TThread.Synchronize(TThread.CurrentThread,
     procedure()
     begin
-      // Memo1.Lines.Add('Server ReadLn: ' + str);
+      doParseMsg(str);
     end);
 
-  // Tony 改用 Queue (非阻塞)
+  // Queue (非阻塞)
   TThread.Queue(nil,
     procedure
     begin
-      Memo1.Lines.Add('S - ReadLn: ' + str);
+//      doParseMsg(str);
     end);
 
   // echo client
   // AContext.Connection.IOHandler.WriteLn('Server Echo 已收到 : ' + str,
   // IndyTextEncoding_UTF8);
+end;
+
+procedure TFormServer.doParseMsg(msg: string);
+begin
+  Memo1.Lines.Add('S-doParseMsg: ' + msg);
 end;
 
 procedure TFormServer.StartServer;

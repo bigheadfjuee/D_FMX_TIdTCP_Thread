@@ -7,19 +7,25 @@ uses
   IdTCPClient, IdGlobal, System.SysUtils;
 
 type
+  TMyParseProc = procedure(msg: AnsiString) of object;
+
+type
   TIdTCP_Recv = class(TThread)
   private
     isMyActive: Boolean;
+    msg: String;
+
   protected
     procedure Execute; override;
-  public
 
+  public
     IdTCPClient: TIdTCPClient;
-    msg: String;
+    MyParseProc: TMyParseProc;
+
     Constructor Create();
     destructor Destroy; override;
     procedure MyConnect(isActive: Boolean);
-    procedure ParseMsg;
+    procedure doParseMsg;
 
   end;
 
@@ -28,12 +34,9 @@ var
 
 implementation
 
-uses
-  uClient;
-
 constructor TIdTCP_Recv.Create();
 begin
-  inherited Create(True); // suspend
+  inherited Create(false); // suspend
 
   isMyActive := false;
   IdTCPClient := TIdTCPClient.Create(nil);
@@ -79,8 +82,11 @@ begin
         while not IdTCPClient.IOHandler.InputBufferIsEmpty do
         begin
           msg := IdTCPClient.IOHandler.ReadLn(IndyTextEncoding_UTF8);
-          Synchronize(ParseMsg);
-          // 視覺元件要用 Synchronize 才不會 hang on;
+
+          // 視覺元件要用 Synchronize(阻塞) 或 Queue(非阻塞) 才不會 hang on;
+          // Synchronize(doParseCMD);
+          Queue(doParseMsg);
+
         end;
       except
         on E: Exception do;
@@ -92,9 +98,10 @@ begin
   end;
 end;
 
-procedure TIdTCP_Recv.ParseMsg;
+procedure TIdTCP_Recv.doParseMsg;
 begin
-  FormClient.Memo1.Lines.Add(msg);
+  if Assigned(MyParseProc) then
+    MyParseProc(msg); // 使用自訂的方式處理收到的字串
 end;
 
 procedure TIdTCP_Recv.MyConnect(isActive: Boolean);
@@ -104,7 +111,9 @@ begin
   else
   begin
     isMyActive := false;
-    IdTCPClient.Disconnect;
+
+    if IdTCPClient.Connected then
+      IdTCPClient.Disconnect;
   end;
 end;
 
