@@ -1,0 +1,178 @@
+object FormServer: TFormServer
+  Left = 0
+  Top = 0
+  Caption = 'FormServer'
+  ClientHeight = 463
+  ClientWidth = 843
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    StyledSettings = [Family, Style, FontColor]
+    Align = Client
+    Margins.Left = 10.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 355.000000000000000000
+    Size.Height = 443.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 351.000000000000000000
+    Viewport.Height = 439.000000000000000000
+  end
+  object PanelToClient: TPanel
+    Align = Left
+    Margins.Left = 10.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Position.X = 10.000000000000000000
+    Position.Y = 10.000000000000000000
+    Size.Width = 327.000000000000000000
+    Size.Height = 443.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object ListBoxClient: TListBox
+      Align = Top
+      Size.Width = 327.000000000000000000
+      Size.Height = 345.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 323.000000000000000000
+      Viewport.Height = 341.000000000000000000
+    end
+    object edtSend: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 8
+      Text = 'Send to Client '#21737#36032#65281
+      TextSettings.Font.Size = 18.000000000000000000
+      Position.Y = 345.000000000000000000
+      Size.Width = 327.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Style, FontColor]
+    end
+    object PanelSend: TPanel
+      Align = Bottom
+      Position.Y = 378.000000000000000000
+      Size.Width = 327.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object btnMultiSend: TButton
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 104.000000000000000000
+        Position.Y = 11.000000000000000000
+        Size.Width = 96.000000000000000000
+        Size.Height = 38.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'Send To All'
+        TextSettings.Font.Size = 15.000000000000000000
+        OnClick = btnMultiSendClick
+      end
+      object btnSend: TButton
+        StyledSettings = [Family, Style, FontColor]
+        Position.X = 216.000000000000000000
+        Position.Y = 11.000000000000000000
+        Size.Width = 105.000000000000000000
+        Size.Height = 38.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Send To One'
+        TextSettings.Font.Size = 15.000000000000000000
+        OnClick = btnSendClick
+      end
+    end
+  end
+  object PanelServer: TPanel
+    Align = Left
+    Margins.Top = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Position.X = 347.000000000000000000
+    Position.Y = 10.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 443.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    object btnStart: TButton
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 9.000000000000000000
+      Position.Y = 80.000000000000000000
+      Size.Width = 88.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Start'
+      TextSettings.Font.Size = 15.000000000000000000
+      OnClick = btnStartClick
+    end
+    object btnStop: TButton
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 9.000000000000000000
+      Position.Y = 128.000000000000000000
+      Size.Width = 88.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'Stop'
+      TextSettings.Font.Size = 15.000000000000000000
+      OnClick = btnStopClick
+    end
+    object edtPort: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 6
+      Text = '6667'
+      TextSettings.Font.Size = 15.000000000000000000
+      Position.X = 8.000000000000000000
+      Position.Y = 40.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Family, Style, FontColor]
+    end
+    object labPort: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 15.000000000000000000
+      Text = 'Port :'
+    end
+    object btnClearMemo: TButton
+      StyledSettings = [Family, Style, FontColor]
+      Position.X = 8.000000000000000000
+      Position.Y = 392.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 38.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Clear Memo'
+      TextSettings.Font.Size = 15.000000000000000000
+      OnClick = btnClearMemoClick
+    end
+  end
+  object IdTCPServer1: TIdTCPServer
+    Bindings = <>
+    DefaultPort = 0
+    OnContextCreated = IdTCPServer1ContextCreated
+    OnConnect = IdTCPServer1Connect
+    OnDisconnect = IdTCPServer1Disconnect
+    OnException = IdTCPServer1Exception
+    OnExecute = IdTCPServer1Execute
+    Left = 128
+    Top = 88
+  end
+end

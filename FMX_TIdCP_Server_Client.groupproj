@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D02AEDBF-BC1A-4CCB-8C88-5B56EE08A98E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Server\MyIdTcpServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client\MyIdTcpClient.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MyIdTcpServer">
+        <MSBuild Projects="Server\MyIdTcpServer.dproj"/>
+    </Target>
+    <Target Name="MyIdTcpServer:Clean">
+        <MSBuild Projects="Server\MyIdTcpServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MyIdTcpServer:Make">
+        <MSBuild Projects="Server\MyIdTcpServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MyIdTcpClient">
+        <MSBuild Projects="Client\MyIdTcpClient.dproj"/>
+    </Target>
+    <Target Name="MyIdTcpClient:Clean">
+        <MSBuild Projects="Client\MyIdTcpClient.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MyIdTcpClient:Make">
+        <MSBuild Projects="Client\MyIdTcpClient.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MyIdTcpServer;MyIdTcpClient"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MyIdTcpServer:Clean;MyIdTcpClient:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MyIdTcpServer:Make;MyIdTcpClient:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
