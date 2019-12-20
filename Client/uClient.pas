@@ -173,7 +173,7 @@ procedure TFormClient.tmReadLnTimer(Sender: TObject);
 var
   str: String;
 begin
-  // Timer ReadLn 的方式
+  // 用 Timer ReadLn 的方式
   try
     if IdTCPClient1.IOHandler.InputBufferIsEmpty then
       IdTCPClient1.IOHandler.CheckForDataOnSource(0);

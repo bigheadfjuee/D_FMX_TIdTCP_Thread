@@ -30,13 +30,13 @@ type
   end;
 
 var
-  IdTCP_Recv: TIdTCP_Recv;
-
+  IdTCP_Recv: TIdTCP_Recv; // 外部 thread 要寫在這裡
+    // 如果寫在別的 class 的 field 中使用，會導致 access error
 implementation
 
 constructor TIdTCP_Recv.Create();
 begin
-  inherited Create(false); // suspend
+  inherited Create(false); // suspend: false
 
   isMyActive := false;
   IdTCPClient := TIdTCPClient.Create(nil);
