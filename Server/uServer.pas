@@ -262,6 +262,8 @@ begin
       end;
       TIdContext(List[ListBoxClient.ItemIndex]).Connection.IOHandler.WriteLn
         (edtSend.Text, IndyTextEncoding_UTF8);
+        // Server 的傳送 or Client 的接收有問題
+        // 例：♥ かわぃ 傳送這幾個字有問題
     finally
       IdTCPServer1.Contexts.UnlockList;
     end;

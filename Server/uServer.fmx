@@ -54,7 +54,7 @@ object FormServer: TFormServer
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Top
       TabOrder = 8
-      Text = 'Send to Client '#21737#36032#65281
+      Text = 'Send to Client '#9829' '#12363#12431#12355' '#21737#36032#65281' 1234'
       TextSettings.Font.Size = 18.000000000000000000
       Position.Y = 345.000000000000000000
       Size.Width = 327.000000000000000000
@@ -132,7 +132,7 @@ object FormServer: TFormServer
     object edtPort: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 6
-      Text = '6667'
+      Text = '6668'
       TextSettings.Font.Size = 15.000000000000000000
       Position.X = 8.000000000000000000
       Position.Y = 40.000000000000000000

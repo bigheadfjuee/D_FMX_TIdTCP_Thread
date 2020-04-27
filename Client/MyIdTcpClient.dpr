@@ -1,4 +1,4 @@
-﻿program MyIdTcpClient;
+program MyIdTcpClient;
 
 uses
   System.StartUpCopy,

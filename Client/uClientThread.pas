@@ -7,7 +7,7 @@ uses
   IdTCPClient, IdGlobal, System.SysUtils;
 
 type
-  TMyParseProc = procedure(msg: AnsiString) of object;
+  TMyParseProc = procedure(msg: string) of object;
 
 type
   TIdTCP_Recv = class(TThread)

@@ -23,8 +23,8 @@ object FormClient: TFormClient
     Size.Height = 436.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
-    Viewport.Width = 368.000000000000000000
-    Viewport.Height = 432.000000000000000000
+    Viewport.Width = 372.000000000000000000
+    Viewport.Height = 436.000000000000000000
   end
   object tmReadLn: TTimer
     Enabled = False
@@ -47,7 +47,7 @@ object FormClient: TFormClient
     object edtHost: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 2
-      Text = 'localhost'
+      Text = '192.168.1.181'
       TextSettings.Font.Size = 15.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 72.000000000000000000
@@ -59,7 +59,7 @@ object FormClient: TFormClient
     object edtPort: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 1
-      Text = '6667'
+      Text = '6668'
       TextSettings.Font.Size = 15.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 112.000000000000000000
@@ -138,7 +138,7 @@ object FormClient: TFormClient
     object edtMsg: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 1
-      Text = 'Server '#21737#36032
+      Text = 'Server '#9829' '#12363#12431#12355' '#21737#36032' 1234'
       TextSettings.Font.Size = 15.000000000000000000
       Position.X = 10.000000000000000000
       Position.Y = 5.000000000000000000

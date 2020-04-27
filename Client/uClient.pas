@@ -39,7 +39,7 @@ type
     procedure Connect(var client: TIdTCPClient);
     procedure DisConnect(var client: TIdTCPClient);
     procedure Send(var client: TIdTCPClient);
-    procedure ParseProc(msg: AnsiString);
+    procedure ParseProc(msg: string);
     { Private declarations }
   public
     { Public declarations }
@@ -79,7 +79,7 @@ begin
   end;
 end;
 
-procedure TFormClient.ParseProc(msg: AnsiString);
+procedure TFormClient.ParseProc(msg: string);
 begin
   Memo1.Lines.Add('C-ParseProc: ' + msg);
 end;
